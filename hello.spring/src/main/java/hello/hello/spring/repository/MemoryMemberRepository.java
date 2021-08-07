@@ -40,4 +40,8 @@ public class MemoryMemberRepository implements MemberRepository {
         // 실무에서는 List를 많이 사용한다.
         return new ArrayList<>(store.values());
     }
+
+    public  void clearStore(){
+        store.clear();
+    }
 }
