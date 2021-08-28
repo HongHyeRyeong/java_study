@@ -9,14 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
     // MemberRepository 인자로 받는 생성자 구현하여 동일한 메모리 객체를 사용하도록 변경하자
     // DI: MemberService 입장에서 보면 외부에서 객체를 정해준다.
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
