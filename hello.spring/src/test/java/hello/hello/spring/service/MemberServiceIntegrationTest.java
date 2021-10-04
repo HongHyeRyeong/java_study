@@ -23,11 +23,10 @@ class MemberServiceIntegrationTest {
     MemberRepository memberRepository; // 스프링에 등록되어 있는 구현체
 
     @Test
-    @Commit
     void 회원가입() {
         // given
         Member member = new Member();
-        member.setName("hello456");
+        member.setName("hello789");
 
         // when
         Long saveId = memberService.join(member);
