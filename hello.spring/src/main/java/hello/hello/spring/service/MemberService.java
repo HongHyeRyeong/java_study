@@ -23,9 +23,17 @@ public class MemberService {
 
     // 회원 가입
     public long join(Member member) {
-        validateDuplicateMember(member);
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+
+        try {
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long end = System.currentTimeMillis();
+            long timeMs = end - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
     }
 
     // 비즈니스 로직: 같은 이름인 회원은 안된다.
@@ -43,11 +51,27 @@ public class MemberService {
 
     // 전체 회원 조회
     public List<Member> findMembers() {
-        return memberRepository.findAll();
+        long start = System.currentTimeMillis();
+
+        try {
+            return memberRepository.findAll();
+        } finally {
+            long end = System.currentTimeMillis();
+            long timeMs = end - start;
+            System.out.println("findMembers = " + timeMs + "ms");
+        }
     }
 
     // 회원 조회
     public Optional<Member> findOne(Long memberId) {
-        return memberRepository.findById(memberId);
+        long start = System.currentTimeMillis();
+
+        try {
+            return memberRepository.findById(memberId);
+        } finally {
+            long end = System.currentTimeMillis();
+            long timeMs = end - start;
+            System.out.println("findOne = " + timeMs + "ms");
+        }
     }
 }
